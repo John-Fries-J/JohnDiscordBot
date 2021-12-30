@@ -1,0 +1,20 @@
+{
+  "name": "do-not-delete-bot-work",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc -w --skipLibCheck"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^13.5.0",
+    "dotenv": "^10.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.4"
+  }
+}
