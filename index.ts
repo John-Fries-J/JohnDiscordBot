@@ -27,7 +27,7 @@ const client = new DiscordJS.Client({
         }
 
         commands?.create({
-            name:'twitch',
+            name:'!twitch',
             description: 'Replies with Archies twitch!',
         })
     })
