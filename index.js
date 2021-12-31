@@ -51,7 +51,7 @@ client.on('messageCreate', (message) => {
 client.on('messageCreate', (message) => {
     if (message.content === '!john') {
         message.reply({
-            content: 'The bot genius.'
+            content: 'The bot genius.:laughing:'
         });
     }
 });
