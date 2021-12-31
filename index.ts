@@ -14,6 +14,22 @@ const client = new DiscordJS.Client({
 
     client.on('ready', () => {
         console.log('The bot is online')
+
+        const guildId = '792552340845756456'
+        const guild = client.guilds.cache.get(guildId)
+        let commands
+
+        if (guild) {
+            commands = guild.commands
+        } else {
+            commands = client.application?.commands
+        
+        }
+
+        commands?.create({
+            name:'twitch',
+            description: 'Replies with Archies twitch!',
+        })
     })
 
     client.on('messageCreate', (message) => {
@@ -37,4 +53,5 @@ const client = new DiscordJS.Client({
             })
         }
     })
+
     client.login(process.env.TOKEN)

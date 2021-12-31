@@ -35,7 +35,21 @@ const client = new discord_js_1.default.Client({
     ]
 });
 client.on('ready', () => {
+    var _a;
     console.log('The bot is online');
+    const guildId = '792552340845756456';
+    const guild = client.guilds.cache.get(guildId);
+    let commands;
+    if (guild) {
+        commands = guild.commands;
+    }
+    else {
+        commands = (_a = client.application) === null || _a === void 0 ? void 0 : _a.commands;
+    }
+    commands === null || commands === void 0 ? void 0 : commands.create({
+        name: 'twitch',
+        description: 'Replies with Archies twitch!',
+    });
 });
 client.on('messageCreate', (message) => {
     if (message.content === '!bot') {
