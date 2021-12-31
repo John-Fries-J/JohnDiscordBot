@@ -24,6 +24,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = __importStar(require("discord.js"));
 const dotenv_1 = __importDefault(require("dotenv"));
+const wokcommands_1 = __importDefault(require("wokcommands"));
+const path_1 = __importDefault(require("path"));
 dotenv_1.default.config();
 const client = new discord_js_1.default.Client({
     intents: [
@@ -33,6 +35,11 @@ const client = new discord_js_1.default.Client({
 });
 client.on('ready', () => {
     console.log('The bot is online');
+    new wokcommands_1.default(client, {
+        commandsDir: path_1.default.join(__dirname, 'commands'),
+        typeScript: true,
+        testServers: ['792552340845756456'],
+    });
 });
 client.on('messageCreate', (message) => {
     if (message.content === '!bot') {
