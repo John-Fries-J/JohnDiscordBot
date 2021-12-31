@@ -47,8 +47,8 @@ client.on('ready', () => {
         commands = (_a = client.application) === null || _a === void 0 ? void 0 : _a.commands;
     }
     commands === null || commands === void 0 ? void 0 : commands.create({
-        name: '!twitch',
-        description: 'Replies with Archies twitch!',
+        name: 'twitch',
+        description: 'Replies with Archies twitch',
     });
 });
 client.on('messageCreate', (message) => {
