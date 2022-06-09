@@ -16,22 +16,17 @@ const client = new DiscordJS.Client({
     client.on('ready', () => {
         console.log('The bot is online')
 
-        new WOKCommands(client, {
-            commandsDir: path.join(__dirname, 'commands'),
-            typeScript: true,
-            testServers: ['949475866201694258'],
-        })
     })
 
     client.on('messageCreate', (message) => {
-        if (message.content === '!bot , !support') {
+        if (message.content === '!bot') {
             message.reply({
                 content: 'This bot is developed by John Fries if you need any assistance please create a ticket or dm John on discord'
             })
         }
     })
     client.on('messageCreate', (message) => {
-        if (message.content === '!Rules') {
+        if (message.content === '!rules') {
             message.reply({
                 content: 'Head over to <#949476143759777842>'
             })
@@ -44,5 +39,32 @@ const client = new DiscordJS.Client({
             })
         }
     })
-
+    client.on('messageCreate', (message) => {
+        if (message.content === '!info') {
+            message.reply({
+                content: ':one:  Go to https://musx.io/ \n:two:  Sign with Discord \n:three:  Sign in with Last.FM (Go to spotify scrobbling in lastfm settings and link your Spotify Account :white_check_mark:)  \n:four:  Use command !points to check your points, or go to https://musx.io/ (Type it in :robot:︱bot-commands or :thought_balloon:︱general) \n:five:  Use !rewards to see the available rewards. \n:six:  Use !claim (number) for the reward you wish to receive.  Example: !claim 1'
+            })
+        }
+    })
+    client.on('messageCreate', (message) => {
+        if (message.content == 'scam') {
+            message.reply({
+                content: 'This is not a scam please check <#949476154312642590> or ask our regulars!'
+            })
+        }
+    })
+    client.on('messageCreate', (message) => {
+        if (message.content == 'Scam') {
+            message.reply({
+                content: 'This is not a scam please check <#949476154312642590> or ask our regulars!'
+            })
+        }
+    })
+    client.on('messageCreate', (message) => {
+        if (message.content == 'This is scam') {
+            message.reply({
+                content: 'This is not a scam please check <#949476154312642590> or ask our regulars!'
+            })
+        }
+    })
     client.login(process.env.TOKEN)
