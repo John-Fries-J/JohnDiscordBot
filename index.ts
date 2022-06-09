@@ -60,11 +60,19 @@ const client = new DiscordJS.Client({
             })
         }
     })
-    client.on('messageCreate', (message) => {
-        if (message.content == 'This is scam') {
-            message.reply({
-                content: 'This is not a scam please check <#949476154312642590> or ask our regulars!'
-            })
-        }
-    })
+    //needs to work lmao
+    //client.on('messageCreate', (message) => {
+    //    if (message.content === 'This is scam') {
+    //        message.reply({
+    //            content: 'This is not a scam please check <#949476154312642590> or ask our regulars!'
+    //        })
+    //    }
+    //})
+    //client.on('messageCreate', (message) => {
+    //    if (message.content == '!restart') {
+    //        message.reply('Resetting...')
+    //        .then(msg => client.destroy())
+    //        .then(() => client.login(process.env.TOKEN))
+    //        }})
+
     client.login(process.env.TOKEN)
