@@ -17,28 +17,28 @@ const client = new DiscordJS.Client({
         new WOKCommands(client, {
             commandsDir: path.join(__dirname, 'commands'),
             typeScript: true,
-            testServers: ['792552340845756456'],
+            testServers: ['949475866201694258'],
         })
     })
 
     client.on('messageCreate', (message) => {
-        if (message.content === '!bot') {
+        if (message.content === '!bot , !support') {
             message.reply({
-                content: 'This bot is developed by John Fries'
+                content: 'This bot is developed by John Fries if you need any assistance please create a ticket or dm John on discord'
             })
         }
     })
     client.on('messageCreate', (message) => {
-        if (message.content === '!twitch') {
+        if (message.content === '!Rules') {
             message.reply({
-                content: 'Archie\'s twitch is https://www.twitch.tv/archiehedges123. You should drop a follow!'
+                content: 'Head over to <#949476143759777842>'
             })
         }
     })
     client.on('messageCreate', (message) => {
         if (message.content === '!john') {
             message.reply({
-                content: 'The bot genius.'
+                content: 'The bot genius, The cool guy and The man who runs the show around here.'
             })
         }
     })
