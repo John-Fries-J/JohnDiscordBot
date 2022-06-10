@@ -13,6 +13,8 @@
   "dependencies": {
     "discord-inv": "^1.1.0",
     "discord.js": "^13.8.0",
+    "@types/node": "^17.0.41",
+    "colors": "^1.4.0",
     "dotenv": "^10.0.0",
     "nodemon": "^2.0.15",
     "wokcommands": "^1.5.3"

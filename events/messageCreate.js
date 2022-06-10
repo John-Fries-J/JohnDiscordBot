@@ -11,6 +11,7 @@ module.exports = {
      if(message.content.toLowerCase().includes(`<@${client.user.id}>`)) {
        message.reply({
          content: 'Hello'
+
        })
      }
   }
