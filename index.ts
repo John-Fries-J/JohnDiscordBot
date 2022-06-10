@@ -25,15 +25,7 @@ const client = new DiscordJS.Client({
 
         commands?.create({
             name:'info',
-            description: 'Replies with information about giveaways we host.', // need to add user: to mention a user.
-            options: [
-                {
-                    name: 'user',
-                    description: 'User that gets mentioned',
-                    required: false,
-                    type: DiscordJS.Constants.ApplicationCommandOptionTypes.USER
-                }
-            ]
+            description: 'Replies with information about giveaways we host.',
         })
         commands?.create({
             name:'commands',
@@ -60,7 +52,7 @@ let check:any = invite
 
     if(check.guild.id != '949475866201694258') {
       message.reply({
-    content: 'Deleted 💀\n\nSeems like you sent a discord invite link of some other server.'
+    content: 'Seems like you sent a discord invite link of some other server.'
   }).then(m => message.delete());
     }
 
