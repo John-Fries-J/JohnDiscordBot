@@ -1,4 +1,4 @@
-import DiscordJS, { Client, Intents, Interaction } from 'discord.js'
+import DiscordJS, { Client, Intents, Interaction, Options } from 'discord.js'
 import dotenv from 'dotenv'
 import WOKCommands from 'wokcommands'
 import path from 'path'
@@ -23,7 +23,15 @@ const client = new DiscordJS.Client({
 
         commands?.create({
             name:'info',
-            description: 'Replies with information about giveaways we host.' // need to add user: to mention a user.
+            description: 'Replies with information about giveaways we host.', // need to add user: to mention a user.
+            options: [
+                {
+                    name: 'user',
+                    description: 'User that gets mentioned',
+                    required: false,
+                    type: DiscordJS.Constants.ApplicationCommandOptionTypes.USER
+                }
+            ]
         })
         commands?.create({
             name:'commands',
@@ -98,12 +106,14 @@ const client = new DiscordJS.Client({
         const { commandName, options } = interaction
 
         if (commandName === 'info') {
-            interaction.reply({ 
-                content: ':one:  Go to https://musx.io/ \n:two:  Sign with Discord \n:three:  Sign in with Last.FM (Go to spotify scrobbling in lastfm settings and link your Spotify Account :white_check_mark:)  \n:four:  Use command !points to check your points, or go to https://musx.io/ (Type it in :robot:︱bot-commands or :thought_balloon:︱general) \n:five:  Use !rewards to see the available rewards. \n:six:  Use !claim (number) for the reward you wish to receive.  Example: !claim 1',
-                ephemeral: false,
+            const user = options.getUser('user') //this get user broke it lmao, Trying to ping the user here.
 
+            interaction.reply({ 
+                content: `${user}\n:one:  Go to https://musx.io/ \n:two:  Sign with Discord \n:three:  Sign in with Last.FM (Go to spotify scrobbling in lastfm settings and link your Spotify Account :white_check_mark:)  \n:four:  Use command !points to check your points, or go to https://musx.io/ (Type it in :robot:︱bot-commands or :thought_balloon:︱general) \n:five:  Use !rewards to see the available rewards. \n:six:  Use !claim (number) for the reward you wish to receive.  Example: !claim 1`,
+                ephemeral: false,
             })
         }
+
         if (commandName === 'commands') {
             interaction.reply({ 
                 content: '__**!bot**__ - Sends message about the bot developer \n__**!rules**__ - Directs users to the rules channel \n__**!info**__ - Sends info on how to participate in the giveaways \n __**/info**__ - Replies with information about giveaways we host.',
