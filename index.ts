@@ -4,6 +4,8 @@ import WOKCommands from 'wokcommands'
 import path from 'path'
 dotenv.config()
 
+const discordInv = require('discord-inv');
+
 const client = new DiscordJS.Client({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGE_REACTIONS],
 })
@@ -40,6 +42,32 @@ const client = new DiscordJS.Client({
     })
 
     client.on('messageCreate', (message) => {
+
+
+
+// The message to check for a Discord link
+      const regex = /discord.gg\/\w*\d*/
+
+// The message will be tested on "discord.gg/{any character or digit}"
+var containsDiscordUrl = regex.test(message.content);
+
+      if(containsDiscordUrl) {
+  var link = regex.exec(message.content);
+        
+if(link && !message.author.bot) {
+discordInv.getInv(discordInv.getCodeFromUrl('https://' + link[0])).then((invite: object) => {
+let check:any = invite
+
+    if(check.guild.id != '949475866201694258') {
+      message.reply({
+    content: 'Deleted 💀\n\nSeems like you sent a discord invite link of some other server.'
+  }).then(m => message.delete());
+    }
+
+}).catch((err: any) => console.log('This is not a valid invite', err))
+} 
+      };
+      
         if (message.content === '!bot') {
             message.reply({
                 content: 'This bot is developed by John Fries if you need any assistance please create a ticket or dm John on discord'
@@ -67,46 +95,37 @@ const client = new DiscordJS.Client({
             })
         }
     })
+    // John: needs to work lmao
+    // Nish: done, sir.
     client.on('messageCreate', (message) => {
-        if (message.content == 'scam') {
-            message.reply({
-                content: 'This is not a scam please check <#949476154312642590> or ask our regulars!'
-            })
-        }
+    if (message.content.toLowerCase().includes('scam') && !message.author.bot) {
+    message.reply({
+    content: `Hey ${message.author.username},\nIf you are referring this server as a scam, just to let you know, this is not a scam please check <#949476154312642590> or ask our regulars!`
     })
-    client.on('messageCreate', (message) => {
-        if (message.content == 'Scam') {
-            message.reply({
-                content: 'This is not a scam please check <#949476154312642590> or ask our regulars!'
-            })
-        }
+    }
     })
-    //needs to work lmao
-    //client.on('messageCreate', (message) => {
-    //    if (message.content === 'This is scam') {
-    //        message.reply({
-    //            content: 'This is not a scam please check <#949476154312642590> or ask our regulars!'
-    //        })
-    //    }
-    //})
-    //client.on('messageCreate', (message) => {
-    //    if (message.content == '!restart') {
-    //        message.reply('Resetting...')
-    //        .then(msg => client.destroy())
-    //        .then(() => client.login(process.env.TOKEN))
-    //        }})
 
+// Nish: I am really lazy to work on this stuff right now, just let me know which hostibg you use to host the bot, i will make this someday later
 
+    /*
+client.on('messageCreate', (message) => {
+        if (message.content == '!restart') {
+            message.reply('Resetting...')
+            .then(msg => client.destroy())
+           .then(() => client.login(process.env.TOKEN))
+           }})
+*/
 
     client.on('interactionCreate', async (interaction) => {
         if (!interaction.isCommand()) {
             return
         }
 
-        const { commandName, options } = interaction
-
+        const { commandName, user } = interaction
+console.log(interaction)
         if (commandName === 'info') {
-            const user = options.getUser('user') //this get user broke it lmao, Trying to ping the user here.
+            // John: this get user broke it lmao, Trying to ping the user here.
+// Nish: nah, it should work fine now :))
 
             interaction.reply({ 
                 content: `${user}\n:one:  Go to https://musx.io/ \n:two:  Sign with Discord \n:three:  Sign in with Last.FM (Go to spotify scrobbling in lastfm settings and link your Spotify Account :white_check_mark:)  \n:four:  Use command !points to check your points, or go to https://musx.io/ (Type it in :robot:︱bot-commands or :thought_balloon:︱general) \n:five:  Use !rewards to see the available rewards. \n:six:  Use !claim (number) for the reward you wish to receive.  Example: !claim 1`,
