@@ -1,17 +1,38 @@
-import DiscordJS, { Client, Intents, Interaction, Options } from 'discord.js'
+import DiscordJS, { Client, Intents, Interaction, Options, Collection } from 'discord.js'
 import dotenv from 'dotenv'
-import WOKCommands from 'wokcommands'
 import path from 'path'
 dotenv.config()
 
-const discordInv = require('discord-inv');
+import fs from 'fs'
 
 const client = new DiscordJS.Client({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGE_REACTIONS],
 })
 
+client.cooldowns = new Collection();
+
+/******     Event Registration       *******/
+
+const eventFiles = fs
+	.readdirSync("./events")
+	.filter((file) => file.endsWith(".js"));
+
+// Loop through all files and execute the event when it is actually emmited.
+for (const file of eventFiles) {
+	const event = require(`./events/${file}`);
+	if (event.once) {
+		client.once(event.name, (...args) => event.execute(...args, client));
+	} else {
+		client.on(
+			event.name,
+			async (...args) => await event.execute(...args, client)
+		);
+	}
+}
+
+/*******    End     *******/
+
     client.on('ready', () => {
-        console.log('The bot is online')
 
         const guildId = '949475866201694258'
         const guild = client.guilds.cache.get(guildId)
@@ -34,31 +55,6 @@ const client = new DiscordJS.Client({
     })
 
     client.on('messageCreate', (message) => {
-
-
-
-// The message to check for a Discord link
-      const regex = /discord.gg\/\w*\d*/
-
-// The message will be tested on "discord.gg/{any character or digit}"
-var containsDiscordUrl = regex.test(message.content);
-
-      if(containsDiscordUrl) {
-  var link = regex.exec(message.content);
-        
-if(link && !message.author.bot) {
-discordInv.getInv(discordInv.getCodeFromUrl('https://' + link[0])).then((invite: object) => {
-let check:any = invite
-
-    if(check.guild.id != '949475866201694258') {
-      message.reply({
-    content: 'Seems like you sent a discord invite link of some other server.'
-  }).then(m => message.delete());
-    }
-
-}).catch((err: any) => console.log('This is not a valid invite', err))
-} 
-      };
       
         if (message.content === '!bot') {
             message.reply({
@@ -97,7 +93,7 @@ let check:any = invite
     }
     })
 
-// Nish: I am really lazy to work on this stuff right now, just let me know which hostibg you use to host the bot, i will make this someday later
+// Nish: I am really lazy to work on this stuff right now, just let me know which hosting you use to host the bot, i will make this someday later
 
     /*
 client.on('messageCreate', (message) => {
@@ -107,31 +103,5 @@ client.on('messageCreate', (message) => {
            .then(() => client.login(process.env.TOKEN))
            }})
 */
-
-    client.on('interactionCreate', async (interaction) => {
-        if (!interaction.isCommand()) {
-            return
-        }
-
-        const { commandName, user } = interaction
-console.log(interaction)
-        if (commandName === 'info') {
-            // John: this get user broke it lmao, Trying to ping the user here.
-// Nish: nah, it should work fine now :))
-
-            interaction.reply({ 
-                content: `${user}\n:one:  Go to https://musx.io/ \n:two:  Sign with Discord \n:three:  Sign in with Last.FM (Go to spotify scrobbling in lastfm settings and link your Spotify Account :white_check_mark:)  \n:four:  Use command !points to check your points, or go to https://musx.io/ (Type it in :robot:︱bot-commands or :thought_balloon:︱general) \n:five:  Use !rewards to see the available rewards. \n:six:  Use !claim (number) for the reward you wish to receive.  Example: !claim 1`,
-                ephemeral: false,
-            })
-        }
-
-        if (commandName === 'commands') {
-            interaction.reply({ 
-                content: '__**!bot**__ - Sends message about the bot developer \n__**!rules**__ - Directs users to the rules channel \n__**!info**__ - Sends info on how to participate in the giveaways \n __**/info**__ - Replies with information about giveaways we host.',
-                ephemeral: false,
-
-            })
-        }
-    })
 
     client.login(process.env.TOKEN)
