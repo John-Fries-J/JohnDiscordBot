@@ -4,6 +4,8 @@ import WOKCommands from 'wokcommands'
 import path from 'path'
 dotenv.config()
 
+const discordInv = require('discord-inv');
+
 const client = new DiscordJS.Client({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGE_REACTIONS],
 })
@@ -40,6 +42,32 @@ const client = new DiscordJS.Client({
     })
 
     client.on('messageCreate', (message) => {
+
+
+
+// The message to check for a Discord link
+      const regex = /discord.gg\/\w*\d*/
+
+// The message will be tested on "discord.gg/{any character or digit}"
+var containsDiscordUrl = regex.test(message.content);
+
+      if(containsDiscordUrl) {
+  var link = regex.exec(message.content);
+        
+if(link && !message.author.bot) {
+discordInv.getInv(discordInv.getCodeFromUrl('https://' + link[0])).then((invite: object) => {
+let check:any = invite
+
+    if(check.guild.id != '949475866201694258') {
+      message.reply({
+    content: 'Deleted 💀\n\nSeems like you sent a discord invite link of some other server.'
+  }).then(m => message.delete());
+    }
+
+}).catch((err: any) => console.log('This is not a valid invite', err))
+} 
+      };
+      
         if (message.content === '!bot') {
             message.reply({
                 content: 'This bot is developed by John Fries if you need any assistance please create a ticket or dm John on discord'
@@ -67,7 +95,6 @@ const client = new DiscordJS.Client({
             })
         }
     })
-    
     // John: needs to work lmao
     // Nish: done, sir.
     client.on('messageCreate', (message) => {
@@ -78,7 +105,7 @@ const client = new DiscordJS.Client({
     }
     })
 
-// Nish: I am really lazy to work on this stuff right now, just let me know which hosting you use to host the bot, i will make this someday later
+// Nish: I am really lazy to work on this stuff right now, just let me know which hostibg you use to host the bot, i will make this someday later
 
     /*
 client.on('messageCreate', (message) => {
