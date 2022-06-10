@@ -67,46 +67,38 @@ const client = new DiscordJS.Client({
             })
         }
     })
+    
+    // John: needs to work lmao
+    // Nish: done, sir.
     client.on('messageCreate', (message) => {
-        if (message.content == 'scam') {
-            message.reply({
-                content: 'This is not a scam please check <#949476154312642590> or ask our regulars!'
-            })
-        }
+    if (message.content.toLowerCase().includes('scam') && !message.author.bot) {
+    message.reply({
+    content: `Hey ${message.author.username},\nIf you are referring this server as a scam, just to let you know, this is not a scam please check <#949476154312642590> or ask our regulars!`
     })
-    client.on('messageCreate', (message) => {
-        if (message.content == 'Scam') {
-            message.reply({
-                content: 'This is not a scam please check <#949476154312642590> or ask our regulars!'
-            })
-        }
+    }
     })
-    //needs to work lmao
-    //client.on('messageCreate', (message) => {
-    //    if (message.content === 'This is scam') {
-    //        message.reply({
-    //            content: 'This is not a scam please check <#949476154312642590> or ask our regulars!'
-    //        })
-    //    }
-    //})
-    //client.on('messageCreate', (message) => {
-    //    if (message.content == '!restart') {
-    //        message.reply('Resetting...')
-    //        .then(msg => client.destroy())
-    //        .then(() => client.login(process.env.TOKEN))
-    //        }})
 
+// Nish: I am really lazy to work on this stuff right now, just let me know which hosting you use to host the bot, i will make this someday later
 
+    /*
+client.on('messageCreate', (message) => {
+        if (message.content == '!restart') {
+            message.reply('Resetting...')
+            .then(msg => client.destroy())
+           .then(() => client.login(process.env.TOKEN))
+           }})
+*/
 
     client.on('interactionCreate', async (interaction) => {
         if (!interaction.isCommand()) {
             return
         }
 
-        const { commandName, options } = interaction
-
+        const { commandName, user } = interaction
+console.log(interaction)
         if (commandName === 'info') {
-            const user = options.getUser('user') //this get user broke it lmao, Trying to ping the user here.
+            // John: this get user broke it lmao, Trying to ping the user here.
+// Nish: nah, it should work fine now :))
 
             interaction.reply({ 
                 content: `${user}\n:one:  Go to https://musx.io/ \n:two:  Sign with Discord \n:three:  Sign in with Last.FM (Go to spotify scrobbling in lastfm settings and link your Spotify Account :white_check_mark:)  \n:four:  Use command !points to check your points, or go to https://musx.io/ (Type it in :robot:︱bot-commands or :thought_balloon:︱general) \n:five:  Use !rewards to see the available rewards. \n:six:  Use !claim (number) for the reward you wish to receive.  Example: !claim 1`,
