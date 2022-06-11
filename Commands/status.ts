@@ -10,6 +10,8 @@ export default {
     expectedArgs: '<status>',
     ownerOnly: true,
 
+    slash: 'both',
+
     callback:  ({ client, text }) => {
         client.user?.setPresence({
             status: 'dnd',
