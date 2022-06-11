@@ -4,6 +4,7 @@ import path from 'path'
 dotenv.config()
 
 import fs from 'fs'
+import WOKCommands from 'wokcommands'
 
 const client = new DiscordJS.Client({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGE_REACTIONS],
@@ -45,6 +46,12 @@ for (const file of eventFiles) {
 /*******    End     *******/
 
     client.on('ready', () => {
+        new WOKCommands(client,{
+            commandDir: path.join(__dirname, 'commands'),
+            typeScript: true,
+            testServers: ['949475866201694258'],
+            botOwners: ['630070645874622494'],
+        })
 
         const guildId = '949475866201694258'
         const guild = client.guilds.cache.get(guildId)
@@ -115,5 +122,4 @@ client.on('messageCreate', (message) => {
            .then(() => client.login(process.env.TOKEN))
            }})
 */
-
     client.login(process.env.TOKEN)
