@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "scripts": {
     "start": "node index.js",
     "build": "tsc --project tsconfig.json",
     "postinstall": "npm run build",
