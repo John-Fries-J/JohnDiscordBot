@@ -65,7 +65,7 @@ client.on('messageCreate', (message) => {
 client.on("ready", () =>{
     console.log(`Logged in as ${client.user.tag}!`);
     client.user.setPresence({
-        status: "dnd",  //You can show online, idle....
+        status: "online",  //You can show online, idle....
         game: {
             name: "Helping to moderate Musx",  //The message shown
             type: "STREAMING" //PLAYING: WATCHING: LISTENING: STREAMING:
