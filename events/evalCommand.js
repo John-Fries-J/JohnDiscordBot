@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js')
+const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js')
 
 module.exports = {
 	name: "messageCreate",
@@ -75,30 +75,25 @@ console.log(args)
 			const embed = new MessageEmbed()
 				.setTitle('Eval Command')
 				.setDescription(await data);
+                        const buttonRow = new MessageActionRow()
+			.addComponents(
+				new MessageButton()
+					.setCustomId(`evalOkay@$(message.author.id}`)
+					.setLabel('Done')
+					.setStyle('SUCCESS'),
+                                new MessageButton()
+					.setCustomId(`evalDelete@$(message.author.id}`)
+					.setLabel('Delete')
+					.setStyle('DANGER'),
+			);
 			await msg.edit({ embeds: [embed] });
-			await msg.react('✅');
-			await msg.react('❌');
-			const filter = (reaction, user) =>
-				(reaction.emoji.name === '❌' || reaction.emoji.name === '✅') &&
-				user.id === message.author.id;
-			msg.awaitReactions(filter, { max: 1 }).then(collected => {
-				collected.map(emojis => {
-					switch (emojis._emoji.name) {
-						case '✅':
-							msg.reactions.removeAll();
-							break;
-						case '❌':
-							msg.delete();
-							break;
-					}
-				});
 			});
 		} catch (error) {
 			const embed = new MessageEmbed()
 				.setTitle('An Error occured')
 				.setDescription(`${error}`);
 			console.error(error);
-			return await msg.edit({ embeds: [embed] });
+			return await msg.edit({ embeds: [embed], components: [buttonRow] });
 		}
 	} else {
 		message.channel.send(
