@@ -87,7 +87,6 @@ console.log(args)
 					.setStyle('DANGER'),
 			);
 			await msg.edit({ embeds: [embed], components: [buttonRow] });
-			});
 		} catch (error) {
 			const embed = new MessageEmbed()
 				.setTitle('An Error occured')
