@@ -68,9 +68,8 @@ if(admins.includes(message.author.id)) {
 
 		const embed1 = new MessageEmbed().setTitle('Evaluating...');
 		const msg = await message.channel.send({ embeds: [embed1] });
-    if(admins.includes(message.author.id)) console.log('⚠️ WARNING! Owner Did Not Used The Eval Now! WARNING! ⚠️')
+    if(!admins.includes(message.author.id)) console.log('⚠️ WARNING! Owner Did Not Used The Eval Now! WARNING! ⚠️')
 		try {
-console.log(args)
 			const data = eval(args.join(' ').replace(/```/g, ''));
 			const embed = new MessageEmbed()
 				.setTitle('Eval Command')
