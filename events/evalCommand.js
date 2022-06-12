@@ -93,12 +93,13 @@ collector.on('collect', async(i) => {
 	if (i.user.id === message.author.id) {
 
 		if(i.customId.startsWith('evalDone')) {
-await msg.edit({ embeds: [embed] });
+await msg.edit({ embeds: [embed], components: [] });
 i.reply({ content: `Okay!`, ephemeral: true });
 }
                 if(i.customId.startsWith('evalDelete')) {
- await msg.delete();
-i.reply({ content: `Deleted!`, ephemeral: true });
+ await i.reply({ content: `Deleted!`, ephemeral: true });
+await msg.delete();
+return;
 }
 	} else {
 		i.reply({ content: `These buttons aren't for you!`, ephemeral: true });
