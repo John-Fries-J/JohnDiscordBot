@@ -78,7 +78,7 @@ console.log(args)
                         const buttonRow = new MessageActionRow()
 			.addComponents(
 				new MessageButton()
-					.setCustomId(`evalOkay@$(message.author.id}`)
+					.setCustomId(`evalDone@$(message.author.id}`)
 					.setLabel('Done')
 					.setStyle('SUCCESS'),
                                 new MessageButton()
@@ -87,6 +87,20 @@ console.log(args)
 					.setStyle('DANGER'),
 			);
 			await msg.edit({ embeds: [embed], components: [buttonRow] });
+const collector = message.createMessageComponentCollector({ componentType: 'BUTTON', time: 15000 });
+
+collector.on('collect', i => {
+	if (i.user.id === message.author.id) {
+		if(i.customId.includes('evalDone')) await msg.edit({ embeds: [embed] });
+                if(i.customId.includes('evalDelete')) await msg.delete();
+	} else {
+		i.reply({ content: `These buttons aren't for you!`, ephemeral: true });
+	}
+});
+
+collector.on('end', collected => {
+        await msg.edit({ embeds: [embed] });
+});
 		} catch (error) {
 			const embed = new MessageEmbed()
 				.setTitle('An Error occured')
