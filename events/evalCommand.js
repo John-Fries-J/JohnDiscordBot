@@ -91,6 +91,8 @@ const collector = msg.createMessageComponentCollector({ componentType: 'BUTTON',
 
 collector.on('collect', async(i) => {
 	if (i.user.id === message.author.id) {
+i.reply(`${i.user.id} clicked on the ${i.customId} button.`);
+
 		if(i.customId.includes('evalDone')) await msg.edit({ embeds: [embed] });
                 if(i.customId.includes('evalDelete')) await msg.delete();
 	} else {
