@@ -86,14 +86,14 @@ console.log(args)
 					.setLabel('Delete')
 					.setStyle('DANGER'),
 			);
-			await msg.edit({ embeds: [embed] });
+			await msg.edit({ embeds: [embed], components: [buttonRow] });
 			});
 		} catch (error) {
 			const embed = new MessageEmbed()
 				.setTitle('An Error occured')
 				.setDescription(`${error}`);
 			console.error(error);
-			return await msg.edit({ embeds: [embed], components: [buttonRow] });
+			return await msg.edit({ embeds: [embed] });
 		}
 	} else {
 		message.channel.send(
