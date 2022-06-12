@@ -17,11 +17,12 @@ const prefix = '!';
        const cmd = args[0].slice(prefix.length).toLowerCase();
 
        if(cmd == 'eval') {
-          if (
-			message.content.includes('client.destroy()') ||
+let restricted = false;
+const check1 = message.content.includes('client.destroy()') ||
 			message.content.includes('proccess.env') ||
-			message.content.includes('client.token')
-		) return message.channel.send(
+			message.content.includes('client.token');
+if(check1) restricted = true
+          if(restricted == true) return message.channel.send(
 				'Sorry You Cant Use These Type Of Scripts. Move On!'
 			);
 if (
