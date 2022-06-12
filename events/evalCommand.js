@@ -13,7 +13,8 @@ module.exports = {
 const prefix = '!';
 
      if(message.content.startsWith(prefix)) {
-       const args = message.content.slice(prefix.length).trim().split(/ +/g).shift();
+       const args = message.content.slice(prefix.length).trim().split(/ +/g);
+args.shift();
        const cmd = message.content.trim().split(/ +/g)[0].slice(prefix.length).toLowerCase();
 
        if(cmd == 'eval') {
