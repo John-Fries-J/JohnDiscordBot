@@ -66,8 +66,8 @@ const admins = ['908563963392958464', '630070645874622494']
 if(admins.includes(message.author.id)) {
 
 
-		const embed = new MessageEmbed().setTitle('Evaluating...');
-		const msg = await message.channel.send({ embeds: [embed] });
+		const embed1 = new MessageEmbed().setTitle('Evaluating...');
+		const msg = await message.channel.send({ embeds: [embed1] });
     if(admins.includes(message.author.id)) console.log('⚠️ WARNING! Owner Did Not Used The Eval Now! WARNING! ⚠️')
 		try {
 console.log(args)
@@ -75,7 +75,7 @@ console.log(args)
 			const embed = new MessageEmbed()
 				.setTitle('Eval Command')
 				.setDescription(await data);
-			await msg.edit(embed);
+			await msg.edit({ embeds: [embed] });
 			await msg.react('✅');
 			await msg.react('❌');
 			const filter = (reaction, user) =>
