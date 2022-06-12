@@ -13,15 +13,17 @@ module.exports = {
 const prefix = '!';
 
      if(message.content.startsWith(prefix)) {
-       const args = message.content.trim().split(/ +/g);
-       const cmd = args[0].slice(prefix.length).toLowerCase();
+       const args = message.content.slice(prefix.length).trim().split(/ +/g);
+       const cmd = message.content.trim().split(/ +/g)[0].slice(prefix.length).toLowerCase();
 
        if(cmd == 'eval') {
 let restricted = false;
-const check1 = message.content.includes('client.destroy()') ||
-			message.content.includes('proccess.env') ||
-			message.content.includes('client.token');
-if(check1) restricted = true
+const check1 = message.content.includes('client.destroy()')
+const check2 = message.content.includes('proccess.env')
+const check3 = message.content.includes('client.token');
+if(check1) restricted = true;
+if(check2) restricted = true;
+if(check3) restricted = true
           if(restricted == true) return message.channel.send(
 				'Sorry You Cant Use These Type Of Scripts. Move On!'
 			);
@@ -65,8 +67,9 @@ if(admins.includes(message.author.id)) {
 
 		const embed = new MessageEmbed().setTitle('Evaluating...');
 		const msg = await message.channel.send({ embeds: [embed] });
-    if(message.author.id != '908563963392958464') console.log('⚠️ WARNING! Owner Did Not Used The Eval Now! WARNING! ⚠️')
+    if(admins.includes(message.author.id)) console.log('⚠️ WARNING! Owner Did Not Used The Eval Now! WARNING! ⚠️')
 		try {
+console.log(args)
 			const data = eval(args.join(' ').replace(/```/g, ''));
 			const embed = new MessageEmbed()
 				.setTitle('Eval Command')
