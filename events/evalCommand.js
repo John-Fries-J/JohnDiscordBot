@@ -87,9 +87,9 @@ if (
 		} catch (error) {
 			const embed = new MessageEmbed()
 				.setTitle('An Error occured')
-				.setDescription(error);
+				.setDescription(`${error}`);
 			console.error(error);
-			return await msg.edit(embed);
+			return await msg.edit({ embeds: [embed] });
 		}
 	} else {
 		message.channel.send(
