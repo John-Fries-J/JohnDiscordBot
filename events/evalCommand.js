@@ -58,6 +58,10 @@ if (
 			return message.channel.send(
 				'Do I Look Like A Child To You? I Am A Bot .-.'
 			);
+const admins = ['908563963392958464', '630070645874622494']
+
+if(admins.includes(message.author.id)) {
+
 
 		const embed = new MessageEmbed().setTitle('Evaluating...');
 		const msg = await message.channel.send({ embeds: [embed] });
@@ -105,4 +109,5 @@ if (
        }
 
      }
+}
 }
