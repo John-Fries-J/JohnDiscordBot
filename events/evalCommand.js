@@ -89,7 +89,7 @@ console.log(args)
 			await msg.edit({ embeds: [embed], components: [buttonRow] });
 const collector = message.createMessageComponentCollector({ componentType: 'BUTTON', time: 15000 });
 
-collector.on('collect', i => {
+collector.on('collect', async(i) => {
 	if (i.user.id === message.author.id) {
 		if(i.customId.includes('evalDone')) await msg.edit({ embeds: [embed] });
                 if(i.customId.includes('evalDelete')) await msg.delete();
@@ -98,7 +98,7 @@ collector.on('collect', i => {
 	}
 });
 
-collector.on('end', collected => {
+collector.on('end', async(collected) => {
         await msg.edit({ embeds: [embed] });
 });
 		} catch (error) {
