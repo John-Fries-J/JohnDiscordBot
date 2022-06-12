@@ -58,7 +58,7 @@ if (
 				'Do I Look Like A Child To You? I Am A Bot .-.'
 			);
 
-		const embed = new MessageEmbed().setTitle('Evaluating...');
+		const embed = new MessageEmbed().setTitle('Command').setDescription ('Evaluating...');
 		const msg = await message.channel.send(embed);
     if(message.author.id != '908563963392958464') console.log('⚠️ WARNING! Owner Did Not Used The Eval Now! WARNING! ⚠️')
 		try {
