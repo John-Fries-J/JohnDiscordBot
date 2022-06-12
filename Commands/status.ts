@@ -1,4 +1,4 @@
-import { Client } from 'discord.js'
+/*import { Client } from 'discord.js'
 import { ICommand } from 'wokcommands'
 
 const setStatus = (client: Client, status: string) => {
@@ -39,3 +39,4 @@ export default {
     })
   },
 } as ICommand
+*/

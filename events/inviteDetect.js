@@ -24,7 +24,7 @@ discordInv.getInv(discordInv.getCodeFromUrl('https://' + link[0])).then((invite)
 
     if(invite.guild.id != '949475866201694258') {
       message.reply({
-    content: 'Seems like you sent a discord invite link of some other server.'
+    content: 'Please do not send a discord invite.'
   }).then(m => message.delete());
     }
 

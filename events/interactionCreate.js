@@ -48,9 +48,6 @@ module.exports = {
 
 
         if (commandName === 'info') {
-            // John: this get user broke it lmao, Trying to ping the user here.
-// Nish: nah, it should work fine now :))
-
             interaction.reply({ 
                 content: `${user}\n:one:  Go to https://musx.io/ \n:two:  Sign with Discord \n:three:  Sign in with Last.FM (Go to spotify scrobbling in lastfm settings and link your Spotify Account :white_check_mark:)  \n:four:  Use command !points to check your points, or go to https://musx.io/ (Type it in :robot:︱bot-commands or :thought_balloon:︱general) \n:five:  Use !rewards to see the available rewards. \n:six:  Use !claim (number) for the reward you wish to receive.  Example: !claim 1`,
                 ephemeral: false,

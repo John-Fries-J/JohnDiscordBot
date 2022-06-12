@@ -46,13 +46,13 @@ for (const file of eventFiles) {
 /*******    End     *******/
 
     client.on('ready', () => {
-        new WOKCommands(client,{
+        /*new WOKCommands(client,{
             commandDir: path.join(__dirname, 'commands'),
             typeScript: true,
             testServers: ['949475866201694258'],
             botOwners: ['630070645874622494'],
         })
-
+*/
         const guildId = '949475866201694258'
         const guild = client.guilds.cache.get(guildId)
         let commands
