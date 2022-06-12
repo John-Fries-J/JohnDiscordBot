@@ -87,7 +87,7 @@ console.log(args)
 					.setStyle('DANGER'),
 			);
 			await msg.edit({ embeds: [embed], components: [buttonRow] });
-const collector = message.createMessageComponentCollector({ componentType: 'BUTTON', time: 15000 });
+const collector = msg.createMessageComponentCollector({ componentType: 'BUTTON', time: 15000 });
 
 collector.on('collect', async(i) => {
 	if (i.user.id === message.author.id) {
