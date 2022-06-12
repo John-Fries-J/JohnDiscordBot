@@ -20,7 +20,7 @@ args.shift();
        if(cmd == 'eval') {
 let restricted = false;
 const check1 = message.content.includes('client.destroy()')
-const check2 = message.content.includes('proccess.env')
+const check2 = message.content.includes('process.env')
 const check3 = message.content.includes('client.token');
 if(check1) restricted = true;
 if(check2) restricted = true;
