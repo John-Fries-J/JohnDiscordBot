@@ -29,5 +29,5 @@ module.exports = {
 			}],
 			status: (args[1] ? args[1] : client.user.presence.status),
 		});
-	};
+	},
 };
