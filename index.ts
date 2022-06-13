@@ -61,7 +61,7 @@ for (const folder of commandFolders) {
           const command = require(`./commands/${folder}/${file}`)
    		client.commands.set(command.name, command);
          } catch (error: any) {
-    		  console.log('There was a typo or error in ' + chalk.red(file) + '.js :-\n' + chalk.keyword('orange')(error.stack) + '\n')
+    		  console.log('There was a typo or error in ' + chalk.red(file) + '.js :-\n' + chalk.hex('#fc9803')(error.stack) + '\n')
         }
 	}
 }
