@@ -114,7 +114,7 @@ return;
 });
 
 collector.on('end', async(collected) => {
-        if(collected.length <= 0) await msg.edit({ embeds: [embed] });
+        if(collected.length <= 0) newMessage = await msg.edit({ embeds: [embed] });
 });
 		} catch (error) {
 			const embed = new MessageEmbed()
