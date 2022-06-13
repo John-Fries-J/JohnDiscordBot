@@ -5,7 +5,7 @@ dotenv.config()
 const colors = require('colors')
 
 import fs from 'fs';
-import chalk from 'chalk';
+const chalk = import('chalk');
 import WOKCommands from 'wokcommands';
 
 const client = new DiscordJS.Client({
