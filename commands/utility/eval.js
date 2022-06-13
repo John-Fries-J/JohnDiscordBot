@@ -132,9 +132,6 @@ collector.on('end', async(collected) => {
 		);
 	}
 
-
-       }
-
     
 return newMessage;
     
