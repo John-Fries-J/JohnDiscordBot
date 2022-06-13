@@ -4,8 +4,9 @@ import path from 'path'
 dotenv.config()
 const colors = require('colors')
 
-import fs from 'fs'
-import WOKCommands from 'wokcommands'
+import fs from 'fs';
+import chalk from 'chalk';
+import WOKCommands from 'wokcommands';
 
 const client = new DiscordJS.Client({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGE_REACTIONS],
@@ -60,7 +61,7 @@ for (const folder of commandFolders) {
           const command = require(`./commands/${folder}/${file}`)
    		client.commands.set(command.name, command);
          } catch (error) {
-    		  console.log('There was a typo or error in ' + colors.brightRed(file) + '.js :-\n' + colors.brightOrange(error.stack) + '\n')
+    		  console.log('There was a typo or error in ' + chalk.red(file) + '.js :-\n' + chalk.keyword('orange')(error.stack) + '\n')
         }
 	}
 }
