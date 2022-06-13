@@ -71,9 +71,14 @@ if(admins.includes(message.author.id)) {
     if(!admins.includes(message.author.id)) console.log('⚠️ WARNING! Owner Did Not Used The Eval Now! WARNING! ⚠️')
 		try {
 			const data = eval(args.join(' ').replace(/```/g, ''));
-			const embed = new MessageEmbed()
-				.setTitle('Eval Command')
-				.setDescription(`${await data}`);
+			
+const data2 = await data
+const embed = new MessageEmbed()
+				.setTitle('Eval Command');
+if(typeof data2 == 'object') {
+embed.setDescription(`${JSON.stringify(data2)}`);
+} else embed.setDescription(`${data2}`);
+
                         const buttonRow = new MessageActionRow()
 			.addComponents(
 				new MessageButton()
