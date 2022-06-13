@@ -3,8 +3,8 @@ const { inspect } = require('util');
 const admins = ['908563963392958464', '630070645874622494']
 
 module.exports = {
-	name: "ping",
-	description: 'Ping!',
+	name: "eval",
+	description: 'Debug A Script directly from bot!',
 	usage: '',
 	permissions: 'SEND_MESSAGES',
 	guildOnly: true,
