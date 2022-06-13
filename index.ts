@@ -60,7 +60,7 @@ for (const folder of commandFolders) {
     		try {
           const command = require(`./commands/${folder}/${file}`)
    		client.commands.set(command.name, command);
-         } catch (error) {
+         } catch (error: Object) {
     		  console.log('There was a typo or error in ' + chalk.red(file) + '.js :-\n' + chalk.keyword('orange')(error.stack) + '\n')
         }
 	}
