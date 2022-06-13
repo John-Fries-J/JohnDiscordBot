@@ -24,7 +24,7 @@ module.exports = {
 
 
                 if(!args[0]) return message.reply('Provide a value to set!');
-                if(args[1].includes(['idle', 'dnd', 'online'])) {
+                if(!args[1].includes(['idle', 'dnd', 'online'])) {
 const value = args.join(" ")
 client.user.setPresence({
 			activities: [{
