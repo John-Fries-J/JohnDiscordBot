@@ -2,6 +2,9 @@ const escapeRegex = (string) => {
 	return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 };
 
+const { Collection } = require("discord.js");
+const admins = ['908563963392958464', '630070645874622494']
+
 module.exports = {
 	name: "messageCreate",
 
