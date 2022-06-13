@@ -2,8 +2,8 @@ const { MessageEmbed, MessageActionRow, MessageButton, MessageSelectMenu } = req
 const admins = ['908563963392958464', '630070645874622494']
 
 module.exports = {
-	name: "ping",
-	description: 'Ping!',
+	name: "status",
+	description: 'Set Status to a specific value!',
 	usage: '',
 	permissions: 'SEND_MESSAGES',
 	guildOnly: true,
