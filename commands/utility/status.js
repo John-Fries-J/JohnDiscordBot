@@ -17,7 +17,7 @@ module.exports = {
 
 	async execute(client, message, args) {
          if(!admins.includes(message.author.id)) {
-return message.reply({ content: 'You don't have permission to use this.' })
+return message.reply({ content: 'You don\'t have permission to use this.' })
 }
           
 // Set the client user's presence
