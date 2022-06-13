@@ -1,12 +1,11 @@
 {
-  "name": "do-not-delete-bot-work",
+  "name": "johnbot",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "build": "tsc --project tsconfig.json",
-    "postinstall": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.ts"
   },
