@@ -102,11 +102,12 @@ collector.on('collect', async(i) => {
 		if(i.customId.startsWith('evalDone')) {
 await msg.edit({ embeds: [embed], components: [] });
 i.reply({ content: `Okay!`, ephemeral: true });
+return newMessage;
 }
                 if(i.customId.startsWith('evalDelete')) {
  await i.reply({ content: `Deleted!`, ephemeral: true });
 await msg.delete();
-return;
+return newMessage;
 }
 	} else {
 		i.reply({ content: `These buttons aren't for you!`, ephemeral: true });
@@ -115,6 +116,7 @@ return;
 
 collector.on('end', async(collected) => {
         if(collected.length <= 0) newMessage = await msg.edit({ embeds: [embed] });
+return newMessage;
 });
 		} catch (error) {
 			const embed = new MessageEmbed()
