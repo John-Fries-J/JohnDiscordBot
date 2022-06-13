@@ -73,7 +73,7 @@ if(admins.includes(message.author.id)) {
 			const data = eval(args.join(' ').replace(/```/g, ''));
 			const embed = new MessageEmbed()
 				.setTitle('Eval Command')
-				.setDescription(await data);
+				.setDescription(`${await data}`);
                         const buttonRow = new MessageActionRow()
 			.addComponents(
 				new MessageButton()
