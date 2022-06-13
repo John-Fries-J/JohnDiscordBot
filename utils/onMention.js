@@ -1,8 +1,13 @@
+module.exports = {
+	/**
+	 * @description Executes when the bot is pinged.
+	 * @author Naman Vrati
+	 * @param {Object} message The Message Object of the command.
+	 */
 
-function execute() {
+	async execute(message) {
 message.reply({
          content: 'Ayo? this works?'
 })
+},
 }
-
-module.exports = execute;
