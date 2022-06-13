@@ -22,6 +22,16 @@ module.exports = {
 			content: 'You don\'t have permission to use this.'
 		})
 
+
+                if(!args[0]) return message.reply('Provide a value to set!');
+                if(args[1].includes(['idle', 'dnd', 'online']) {
+const value = args.join(" ")
+client.user.setPresence({
+			activities: [{
+				name: `${value}`
+			}],
+		});
+} else {
 		// Set the client user's presence
 		client.user.setPresence({
 			activities: [{
@@ -29,5 +39,6 @@ module.exports = {
 			}],
 			status: (args[1] ? args[1] : client.user.presence.status),
 		});
+}
 	},
 };
