@@ -27,7 +27,7 @@ module.exports = {
 			message.content == `<@${client.user.id}>` ||
 			message.content == `<@!${client.user.id}>`
 		) {
-require('../utils/onMention.js').execute(message)
+require('./utils/onMention.js').execute(message)
 return;
 		}
 
