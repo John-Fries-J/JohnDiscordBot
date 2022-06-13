@@ -1,4 +1,5 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js')
+const { inspect } = require('util');
 
 module.exports = {
 	name: "messageCreate",
@@ -70,14 +71,17 @@ if(admins.includes(message.author.id)) {
 		const msg = await message.channel.send({ embeds: [embed1] });
     if(!admins.includes(message.author.id)) console.log('⚠️ WARNING! Owner Did Not Used The Eval Now! WARNING! ⚠️')
 		try {
-			const data = eval(args.join(' ').replace(/```/g, ''));
+			const data = eval(args.join(' ').replace(/```/g, ''), { depth: 0});
 			
 const data2 = await data
 const embed = new MessageEmbed()
-				.setTitle('Eval Command');
+				/*.setTitle('Eval Command');
 if(typeof data2 == 'object') {
 embed.setDescription(`${JSON.stringify(data2)}`);
-} else embed.setDescription(`${data2}`);
+} else embed.setDescription(`${data2}`);*/
+.setColor('2f3136')
+                .addField('Input:\n', '```js\n' + `${args.join(" ").substring(0, 1010)}` + '```', false)
+                .addField('Output:\n', '```js\n' + `${inspect(data2, { depth: 0}).substring(0, 1010)}` + '```', false);
 
                         const buttonRow = new MessageActionRow()
 			.addComponents(
@@ -111,7 +115,7 @@ return;
 });
 
 collector.on('end', async(collected) => {
-        if(collected.length > 0) await msg.edit({ embeds: [embed] });
+        if(collected.length <= 0) await msg.edit({ embeds: [embed] });
 });
 		} catch (error) {
 			const embed = new MessageEmbed()
