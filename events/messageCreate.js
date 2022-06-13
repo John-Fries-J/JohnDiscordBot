@@ -11,7 +11,7 @@ module.exports = {
 
 		// Declares const to be used.
 
-		const { client, guild, channel, content, author } = message;
+		const { guild, channel, content, author } = message;
 
 		// Checks if the bot is mentioned in the message all alone and triggers onMention trigger.
 		// You can change the behavior as per your liking at ./messages/onMention.js
