@@ -1,6 +1,6 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js')
 const { inspect } = require('util');
-const admins = ['908563963392958464', '630070645874622494']
+const admins = ['630070645874622494']
 
 module.exports = {
 	name: "eval",
@@ -33,7 +33,7 @@ if (
 			message.author != '908563963392958464'
 		)
 			return message.channel.send(
-				'You Better Tell Nishant1500#9735 To Use This For You.'
+				'This is broken lmao'
 			);
 		if (
 			message.content.includes('process.env') &&
