@@ -1,7 +1,7 @@
 const {
 	MessageEmbed, MessageActionRow, MessageButton, MessageSelectMenu
 } = require('discord.js');
-const admins = ['908563963392958464', '630070645874622494'];
+const admins = ['630070645874622494'];
 
 module.exports = {
 	name: "status",
