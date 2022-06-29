@@ -7,7 +7,7 @@ module.exports = {
 
 	async execute(message) {
 message.reply({
-         content: 'Ayo? this works?'
+         content: 'Hopefully payout soon? -john'
 })
 },
 }
