@@ -79,7 +79,7 @@ for (const folder of commandFolders) {
 
         commands?.create({
             name:'info',
-            description: 'Replies with information about giveaways we host.',
+            description: 'to be made',
         })
         commands?.create({
             name:'commands',
@@ -91,14 +91,14 @@ for (const folder of commandFolders) {
       
         if (message.content === '!bot') {
             message.reply({
-                content: 'This bot is developed by John Fries if you need any assistance please create a ticket or dm John on discord'
+                content: 'This bot is developed by John Fries if you need any assistance please dm John on discord'
             })
         }
     })
     client.on('messageCreate', (message) => {
         if (message.content === '!rules') {
             message.reply({
-                content: 'Head over to <#949476143759777842>'
+                content: 'Head over to <#667395056570728459>'
             })
         }
     })
@@ -112,14 +112,14 @@ for (const folder of commandFolders) {
     client.on('messageCreate', (message) => {
         if (message.content === '!info') {
             message.reply({
-                content: ':one:  Go to https://musx.io/ \n:two:  Sign with Discord \n:three:  Sign in with Last.FM (Go to spotify scrobbling in lastfm settings and link your Spotify Account :white_check_mark:)  \n:four:  Use command !points to check your points, or go to https://musx.io/ (Type it in :robot:︱bot-commands or :thought_balloon:︱general) \n:five:  Use !rewards to see the available rewards. \n:six:  Use !claim (number) for the reward you wish to receive.  Example: !claim 1'
+                content: 'To be made'
             })
         }
     })
     client.on('messageCreate', (message) => {
-    if (message.content.toLowerCase().includes('scam') && !message.author.bot) {
+    if (message.content.toLowerCase().includes('<@266413473154465793>') && !message.author.bot) {
     message.reply({
-    content: `Hey ${message.author.username},\nIf you are referring this server as a scam, just to let you know, this is not a scam please check <#949476154312642590> or ask our regulars!`
+    content: `Hey ${message.author.username},Please don't ping them`
     })
     }
     })
