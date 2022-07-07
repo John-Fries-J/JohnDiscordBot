@@ -67,7 +67,7 @@ for (const folder of commandFolders) {
 }
 
     client.on('ready', () => {
-        const guildId = '949475866201694258'
+        const guildId = '657622961146298388'
         const guild = client.guilds.cache.get(guildId)
         let commands
 
@@ -117,7 +117,7 @@ for (const folder of commandFolders) {
         }
     })
     client.on('messageCreate', (message) => {
-    if (message.content.toLowerCase().includes('<@266413473154465793>') && !message.author.bot) {
+    if (message.content.toLowerCase().includes('<@630070645874622494>') && !message.author.bot) {
     message.reply({
     content: `Hey ${message.author.username},Please don't ping them`
     })
