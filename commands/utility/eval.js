@@ -28,39 +28,6 @@ if(check3) restricted = true
           if(restricted == true) return message.channel.send(
 				'Sorry You Cant Use These Type Of Scripts. Move On!'
 			);
-if (
-			message.content.includes('client.db') &&
-			message.author != '908563963392958464'
-		)
-			return message.channel.send(
-				'This is broken lmao'
-			);
-		if (
-			message.content.includes('process.env') &&
-			message.author != '908563963392958464'
-		)
-			return message.channel.send('Can We Just Not?');
-		if (
-			message.content.includes('rm') &&
-			message.author != '908563963392958464'
-		)
-			return message.channel.send(
-				'Imma Better Delete You From My Whitelist .-.'
-			);
-		if (
-			message.content.includes('rm -rf') &&
-			message.author != '908563963392958464'
-		)
-			return message.channel.send(
-				'Imma Better Delete You From My Whitelist .-.'
-			);
-		if (
-			message.content.includes('child_process') &&
-			message.author != '908563963392958464'
-		)
-			return message.channel.send(
-				'Do I Look Like A Child To You? I Am A Bot .-.'
-			);
 
 if(admins.includes(message.author.id)) {
 
