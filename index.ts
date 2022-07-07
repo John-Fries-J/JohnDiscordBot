@@ -117,7 +117,7 @@ for (const folder of commandFolders) {
         }
     })
     client.on('messageCreate', (message) => {
-    if (message.content.toLowerCase().includes('@John Fries') && !message.author.bot) {
+    if (message.content.toLowerCase().includes('<@630070645874622494>') && !message.author.bot) {
     message.reply({
     content: `Hey ${message.author.username},Please don't ping them`
     })
