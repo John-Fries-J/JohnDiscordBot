@@ -19,6 +19,10 @@ var containsDiscordUrl = regex.test(message.content);
       if(containsDiscordUrl) {
   var link = regex.exec(message.content);
         
+
+
+if(message.member.roles.highest.position > message.guild.roles.cache.get("949476126777049109").position) return;
+
 if(link && !message.author.bot) {
 discordInv.getInv(discordInv.getCodeFromUrl('https://' + link[0])).then((invite) => {
 
